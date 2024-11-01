@@ -4,9 +4,12 @@ from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassific
 # Set device
 DEVICE = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-# Load the tokenizer and model
+# Load the tokenizer
 tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
+
+# Load the model
 model = DistilBertForSequenceClassification.from_pretrained('distilbert-base-uncased')
+model.load_state_dict(torch.load("distilbert_movie_sentiment_model.pth"))  # Load your saved model
 model.to(DEVICE)
 model.eval()
 

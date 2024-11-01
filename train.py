@@ -131,12 +131,19 @@ for epoch in range(NUM_EPOCHS):
                 f"| loss: {loss:04f}"
             )
 
-model.eval()
+    model.eval()
 
-with torch.set_grad_enabled(False):
-    print(f"Training accuracy: {compute_accuracy(model, train_loader, DEVICE):.2f}%"
-        f"\n Valid Accruacy: {compute_accuracy(model, valid_loader, DEVICE):.2f}%"
-    )
+    with torch.set_grad_enabled(False):
+        print(f"Training accuracy: {compute_accuracy(model, train_loader, DEVICE):.2f}%"
+            f"\n Valid Accruacy: {compute_accuracy(model, valid_loader, DEVICE):.2f}%"
+        )
 
 print(f"Total training time: {(time.time() - start_time)/60:.2f} min")
 print(f"Test accuracy: {compute_accuracy(model, test_loader, DEVICE):.2f}%")
+
+
+## save model
+# Save the model
+model_save_path = "distilbert_movie_sentiment_model.pth"
+torch.save(model.state_dict(), model_save_path)
+print(f"Model saved to {model_save_path}")

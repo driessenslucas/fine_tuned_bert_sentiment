@@ -50,6 +50,15 @@ The core model is DistilBERT, which is fine-tuned to adapt to the specific task 
 
 4. **Evaluation**: Accuracy is measured on training, validation, and test datasets.
 
+### Results:
+
+```bash
+Training accuracy: 99.19%
+Valid Accruacy: 92.30%
+Total training time: 18.16 min
+Test accuracy: 92.91%
+```
+
 ### Testing
 To test the fine-tuned model on new samples, a separate script `test.py` is provided. This script loads the saved model and tokenizer, allowing you to input text reviews for sentiment prediction.
 
